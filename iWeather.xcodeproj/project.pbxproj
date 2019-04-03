@@ -10,6 +10,7 @@
 		2100B9E3224C61010013236F /* AppDelegateConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100B9E2224C61010013236F /* AppDelegateConstants.swift */; };
 		21256E522252712A009B9010 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21256E512252712A009B9010 /* NetworkService.swift */; };
 		21256E54225272EB009B9010 /* NetworkServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21256E53225272EB009B9010 /* NetworkServiceConstants.swift */; };
+		2186416922551BC300C82D88 /* UserDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2186416822551BC300C82D88 /* UserDefaultsMethods.swift */; };
 		2198321E224D314D00563A42 /* WeatherMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2198321D224D314D00563A42 /* WeatherMainViewController.swift */; };
 		219CB28F2252CF1400459029 /* WeatherMainViewConstatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219CB28E2252CF1400459029 /* WeatherMainViewConstatns.swift */; };
 		21F86EF5224BDE4C008A3E37 /* SearchWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F86EF4224BDE4C008A3E37 /* SearchWeatherTableViewController.swift */; };
@@ -24,6 +25,7 @@
 		2100B9E2224C61010013236F /* AppDelegateConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateConstants.swift; sourceTree = "<group>"; };
 		21256E512252712A009B9010 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		21256E53225272EB009B9010 /* NetworkServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceConstants.swift; sourceTree = "<group>"; };
+		2186416822551BC300C82D88 /* UserDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMethods.swift; sourceTree = "<group>"; };
 		2198321D224D314D00563A42 /* WeatherMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainViewController.swift; sourceTree = "<group>"; };
 		219CB28E2252CF1400459029 /* WeatherMainViewConstatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainViewConstatns.swift; sourceTree = "<group>"; };
 		21F86EF4224BDE4C008A3E37 /* SearchWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWeatherTableViewController.swift; sourceTree = "<group>"; };
@@ -47,11 +49,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2198321F224D356200563A42 /* Utilities */ = {
+		2186416622551B7400C82D88 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				21256E512252712A009B9010 /* NetworkService.swift */,
 				21256E53225272EB009B9010 /* NetworkServiceConstants.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2186416722551B8A00C82D88 /* UserDefaultsMethods */ = {
+			isa = PBXGroup;
+			children = (
+				2186416822551BC300C82D88 /* UserDefaultsMethods.swift */,
+			);
+			path = UserDefaultsMethods;
+			sourceTree = "<group>";
+		};
+		2198321F224D356200563A42 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2186416722551B8A00C82D88 /* UserDefaultsMethods */,
+				2186416622551B7400C82D88 /* Network */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -146,6 +165,7 @@
 				TargetAttributes = {
 					FA017887224AE70F00A0A240 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -187,6 +207,7 @@
 			files = (
 				21256E54225272EB009B9010 /* NetworkServiceConstants.swift in Sources */,
 				2100B9E3224C61010013236F /* AppDelegateConstants.swift in Sources */,
+				2186416922551BC300C82D88 /* UserDefaultsMethods.swift in Sources */,
 				FA523BFD224C133F006F4E37 /* MediumDetailWeather.swift in Sources */,
 				21256E522252712A009B9010 /* NetworkService.swift in Sources */,
 				21F86EF5224BDE4C008A3E37 /* SearchWeatherTableViewController.swift in Sources */,
@@ -346,7 +367,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chauteco.iWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -363,7 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chauteco.iWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iWeather/Modules/Utilities/NetworkService.swift"
+            timestampString = "576002282.253724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getImageforIcon(iconCode:success:fauiled:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iWeather/Modules/Utilities/NetworkService.swift"
+            timestampString = "576002282.2537791"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "getImageforIcon(iconCode:success:fauiled:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iWeather.NetworkService.getImageforIcon(iconCode: Swift.String, success: (Foundation.Data) -&gt; (), fauiled: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "iWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chauteco/Desktop/clima_Proyecto_german/iWeather/iWeather/Modules/Utilities/NetworkService.swift"
+                  timestampString = "576002283.268023"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "682">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iWeather.NetworkService.getImageforIcon(iconCode: Swift.String, success: (Foundation.Data) -&gt; (), fauiled: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "iWeather"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chauteco/Desktop/clima_Proyecto_german/iWeather/iWeather/Modules/Utilities/NetworkService.swift"
+                  timestampString = "576002283.269429"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "317">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

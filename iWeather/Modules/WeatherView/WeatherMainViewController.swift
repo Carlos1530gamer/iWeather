@@ -34,6 +34,9 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
     private func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        let nibFile = UINib(nibName: "WeatherTableViewCell", bundle: nil)
+        tableView.register(nibFile, forCellReuseIdentifier: "WeatherMainCell")
     }
     
     private func setupUI(){
@@ -42,6 +45,11 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
         mainWeatherCityNameLabel.textAlignment = .center
         mainWeatherTemperatureStatusLabel.adjustsFontSizeToFitWidth = true
         mainWeatherTemperatureStatusLabel.textAlignment = .center
+        //edit view
+        self.view.backgroundColor = .black
+        //edit panel
+        self.mainPanelWeather.layer.cornerRadius = 10
+        self.mainPanelWeather.backgroundColor = UIColor.white.withAlphaComponent(0.5)
     }
     
     private func getFirstWeather(){
@@ -50,7 +58,6 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
             let decodeData = try! JSONDecoder().decode(MediumDetailWeather.self, from: data)
             self?.mainWeatherCityNameLabel.text = decodeData.data[decodeData.count - 1].city_name
             self?.mainWeatherTemperatureStatusLabel.text = "\(decodeData.data[decodeData.count - 1].temp)º"
-            
             self?.service.getImageforIcon(iconCode: decodeData.data[decodeData.count - 1].weather.icon, success: {[weak self] (data) in
                 guard let image = UIImage(data: data) else { return }
                 self?.mainWeatherImageView.image = image
@@ -63,11 +70,22 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
     }
     //MARK: - Protocols for Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherMainCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
+        cell.cityNameLabel.text = "city Name"
+        cell.temLabel.text = "temperatura"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

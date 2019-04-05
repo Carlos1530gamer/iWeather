@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 struct WeatherMainViewConstants{
-    static let mainCity = "mexico"
+    static let mainCity = "Mexico"
 }

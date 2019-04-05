@@ -20,6 +20,7 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var mainWeatherCityNameLabel: UILabel!
     @IBOutlet weak var mainWeatherTemperatureStatusLabel: UILabel!
     @IBOutlet weak var mainWeatherImageView: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,12 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
         service.getWeather(with: parameters, success: {[weak self] (data) in
             let decodeData = try! JSONDecoder().decode(MediumDetailWeather.self, from: data)
             self?.mainWeatherCityNameLabel.text = decodeData.data[decodeData.count - 1].city_name
+            
+            if (decodeData.data[0].pod == "d"){
+                self?.backgroundImage.image = UIImage(named: "day")
+            }else{
+                self?.backgroundImage.image = UIImage(named: "night")
+            }
             self?.mainWeatherTemperatureStatusLabel.text = "\(decodeData.data[decodeData.count - 1].temp)º"
             self?.service.getImageforIcon(iconCode: decodeData.data[decodeData.count - 1].weather.icon, success: {[weak self] (data) in
                 guard let image = UIImage(data: data) else { return }

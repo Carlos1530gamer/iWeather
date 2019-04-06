@@ -15,6 +15,8 @@ struct MediumDetailWeather: Codable {
 
 struct DataWeather: Codable {
     var pod: String
+    var timezone: String
+    var wind_spd: Double
     var city_name: String
     var weather: Weather
     var temp: Double

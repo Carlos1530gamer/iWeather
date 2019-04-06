@@ -8,39 +8,50 @@
 
 import UIKit
 
-class WeatherMainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WeatherMainViewController: UIViewController, UITextFieldDelegate{
     
     typealias constants = WeatherMainViewConstants
     typealias serviceKeys = NetworkServiceKeys
     
     let service = NetworkService.shared
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mainPanelWeather: UIView!
     @IBOutlet weak var mainWeatherCityNameLabel: UILabel!
     @IBOutlet weak var mainWeatherTemperatureStatusLabel: UILabel!
     @IBOutlet weak var mainWeatherImageView: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var mainWeatherWindSpeed: UILabel!
+    @IBOutlet weak var mainWeatherTimeZone: UILabel!
+    @IBOutlet weak var searchWeatherTextField: UITextField!
+    @IBOutlet weak var searchWeatherButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        getFirstWeather()
-        setupTableView()
+        getWeather()
         setupUI()
     }
     
-    //MARK: - setup functions
-    private func setupTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        let nibFile = UINib(nibName: "WeatherTableViewCell", bundle: nil)
-        tableView.register(nibFile, forCellReuseIdentifier: "WeatherMainCell")
-    }
     
     private func setupUI(){
+        //button
+        self.searchWeatherButton.backgroundColor = constants.Button.color
+        self.searchWeatherButton.titleLabel?.text = constants.Button.tittle
+        self.searchWeatherButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.searchWeatherButton.tintColor = UIColor.black
+        self.searchWeatherButton.layer.borderWidth = 1
+        self.searchWeatherButton.layer.borderColor = UIColor.white.cgColor
+        self.searchWeatherButton.layer.cornerRadius = 10
+        //textfield
+        self.searchWeatherTextField.layer.cornerRadius = 10
+        self.searchWeatherTextField.textAlignment = .center
+        self.searchWeatherTextField.placeholder = constants.TextFieldSearch.placeHolder
+        self.searchWeatherTextField.delegate = self
+        self.searchWeatherTextField.layer.borderWidth = 1
+        self.searchWeatherTextField.layer.borderColor = UIColor.blue.cgColor
+        self.searchWeatherTextField.backgroundColor = .clear
+        
         //labels persona
         mainWeatherCityNameLabel.adjustsFontSizeToFitWidth = true
         mainWeatherCityNameLabel.textAlignment = .center
@@ -53,46 +64,51 @@ class WeatherMainViewController: UIViewController, UITableViewDataSource, UITabl
         self.mainPanelWeather.backgroundColor = UIColor.white.withAlphaComponent(0.5)
     }
     
-    private func getFirstWeather(){
+    private func getWeather(){
         let parameters = [serviceKeys.city: constants.mainCity]
         service.getWeather(with: parameters, success: {[weak self] (data) in
             let decodeData = try! JSONDecoder().decode(MediumDetailWeather.self, from: data)
-            self?.mainWeatherCityNameLabel.text = decodeData.data[decodeData.count - 1].city_name
+            self?.mainWeatherCityNameLabel.text = "Ciudad: " + decodeData.data[decodeData.count - 1].city_name
+            self?.mainWeatherWindSpeed.text = "Velocidad Aire: \(decodeData.data[0].wind_spd)"
+            self?.mainWeatherTimeZone.text = "Zona Horaria: " + decodeData.data[0].timezone
             
             if (decodeData.data[0].pod == "d"){
                 self?.backgroundImage.image = UIImage(named: "day")
             }else{
                 self?.backgroundImage.image = UIImage(named: "night")
             }
-            self?.mainWeatherTemperatureStatusLabel.text = "\(decodeData.data[decodeData.count - 1].temp)º"
+            self?.mainWeatherTemperatureStatusLabel.text = "Temperatura: \(decodeData.data[decodeData.count - 1].temp)º"
             self?.service.getImageforIcon(iconCode: decodeData.data[decodeData.count - 1].weather.icon, success: {[weak self] (data) in
                 guard let image = UIImage(data: data) else { return }
                 self?.mainWeatherImageView.image = image
-            }, fauiled: { (error) in
-                print(error)
             })
-        }) { (error) in
-            print("error")
-        }
-    }
-    //MARK: - Protocols for Table view
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        })
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherMainCell", for: indexPath) as? WeatherTableViewCell else { return UITableViewCell() }
-        cell.cityNameLabel.text = "city Name"
-        cell.temLabel.text = "temperatura"
-        return cell
+    private func getWeather(city: String){
+        let parameters = [serviceKeys.city: city]
+        service.getWeather(with: parameters, success: {[weak self] (data) in
+            let decodeData = try! JSONDecoder().decode(MediumDetailWeather.self, from: data)
+            self?.mainWeatherCityNameLabel.text = "Ciudad: " + decodeData.data[decodeData.count - 1].city_name
+            self?.mainWeatherWindSpeed.text = "Velocidad Aire: \(decodeData.data[0].wind_spd) m/s"
+            self?.mainWeatherTimeZone.text = "Zona Horaria: " + decodeData.data[0].timezone
+            
+            if (decodeData.data[0].pod == "d"){
+                self?.backgroundImage.image = UIImage(named: "day")
+            }else{
+                self?.backgroundImage.image = UIImage(named: "night")
+            }
+            self?.mainWeatherTemperatureStatusLabel.text = "Temperatura: \(decodeData.data[decodeData.count - 1].temp)º"
+            self?.service.getImageforIcon(iconCode: decodeData.data[decodeData.count - 1].weather.icon, success: {[weak self] (data) in
+                guard let image = UIImage(data: data) else { return }
+                self?.mainWeatherImageView.image = image
+                })
+        })
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+    @IBAction private func searchNewWeather(_ sender: Any) {
+        guard let textCity = self.searchWeatherTextField.text else { return }
+        
+        getWeather(city: textCity)
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
 }

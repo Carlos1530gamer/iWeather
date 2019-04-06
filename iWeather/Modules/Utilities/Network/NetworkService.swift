@@ -60,7 +60,7 @@ class NetworkService {
     
     //Especial func for images
     
-    func getImageforIcon(iconCode: String, success: @escaping(_ data: Data)->Void, fauiled: @escaping(_ data: String)->Void){
+    func getImageforIcon(iconCode: String, success: @escaping(_ data: Data)->Void){
         let path = "https://www.weatherbit.io/static/img/icons/" + iconCode + ".png"
         
         guard let request = createURLRequest(with: path, httpMethod: .get) else { return }
@@ -68,7 +68,7 @@ class NetworkService {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 if let err = error{
-                    fauiled(err.localizedDescription)
+                    print(err.localizedDescription)
                 }else{
                     if let response = response as? HTTPURLResponse{
                         switch response.statusCode{
@@ -89,14 +89,14 @@ class NetworkService {
     }
     
     //MARK: getWheaterByCity
-    func getWeather(with parameters: [String:String], success: @escaping(_ data: Data)->Void, fauiled: @escaping(_ error: String)->Void){
+    func getWeather(with parameters: [String:String], success: @escaping(_ data: Data)->Void){
         let url = createFullPath(with: parameters)
         guard let request = createURLRequest(with: url, httpMethod: .get) else { return }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 if let err = error{
-                    fauiled(err.localizedDescription)
+                    print(err.localizedDescription)
                 }else{
                     if let response = response as? HTTPURLResponse {
                         switch response.statusCode{

@@ -23,11 +23,13 @@ class WeatherMainViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var mainWeatherWindSpeed: UILabel!
     @IBOutlet weak var mainWeatherTimeZone: UILabel!
     @IBOutlet weak var searchWeatherTextField: UITextField!
-    @IBOutlet weak var searchWeatherButton: UIButton!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //NotificationCenter.default.addObserver(self, selector: #selector(endEteringCity), name: UIResponder.keyboardDidHideNotification, object: nil)
         
         getWeather()
         setupUI()
@@ -35,14 +37,6 @@ class WeatherMainViewController: UIViewController, UITextFieldDelegate{
     
     
     private func setupUI(){
-        //button
-        self.searchWeatherButton.backgroundColor = constants.Button.color
-        self.searchWeatherButton.titleLabel?.text = constants.Button.tittle
-        self.searchWeatherButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        self.searchWeatherButton.tintColor = UIColor.black
-        self.searchWeatherButton.layer.borderWidth = 1
-        self.searchWeatherButton.layer.borderColor = UIColor.white.cgColor
-        self.searchWeatherButton.layer.cornerRadius = 10
         //textfield
         self.searchWeatherTextField.layer.cornerRadius = 10
         self.searchWeatherTextField.textAlignment = .center
@@ -62,6 +56,10 @@ class WeatherMainViewController: UIViewController, UITextFieldDelegate{
         //edit panel
         self.mainPanelWeather.layer.cornerRadius = 10
         self.mainPanelWeather.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(endEteringCity))
+        
+        view.addGestureRecognizer(tap)
     }
     
     private func getWeather(){
@@ -106,9 +104,17 @@ class WeatherMainViewController: UIViewController, UITextFieldDelegate{
         })
     }
     
-    @IBAction private func searchNewWeather(_ sender: Any) {
-        guard let textCity = self.searchWeatherTextField.text else { return }
-        
-        getWeather(city: textCity)
+    
+    @IBAction func cityHasChange(_ sender: UITextField) {
+        if let city = sender.text{
+            getWeather(city: city)
+        }else{
+            getWeather()
+        }
     }
+    
+    @objc func endEteringCity(){
+        self.view.endEditing(true)
+    }
+    
 }

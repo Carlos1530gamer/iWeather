@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="46b-aL-P64">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="46b-aL-P64">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,42 +61,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-5b-gDO">
-                                        <rect key="frame" x="21" y="8" width="281" height="30"/>
+                                        <rect key="frame" x="21" y="8" width="333" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48S-PH-GqY">
-                                        <rect key="frame" x="302" y="8" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="cUG-eW-DGm"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="searchNewWeather:" destination="46b-aL-P64" eventType="touchUpInside" id="Nvm-QO-qTr"/>
+                                            <action selector="cityHasChange:" destination="46b-aL-P64" eventType="editingDidEnd" id="dZc-JK-wCf"/>
                                         </connections>
-                                    </button>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oG8-Wl-Ryb" firstAttribute="top" secondItem="sYr-Uj-hhY" secondAttribute="bottom" constant="2" id="2Ae-Hi-hSA"/>
-                                    <constraint firstAttribute="trailing" secondItem="48S-PH-GqY" secondAttribute="trailing" constant="27" id="37W-6H-O79"/>
                                     <constraint firstItem="7i5-OF-TvR" firstAttribute="top" secondItem="oG8-Wl-Ryb" secondAttribute="bottom" constant="7" id="46R-2h-Ezy"/>
-                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="top" secondItem="QZX-pS-g7R" secondAttribute="topMargin" id="4lH-AR-Paa"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="centerX" secondItem="oG8-Wl-Ryb" secondAttribute="centerX" id="8Hv-gZ-qdw"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="leading" secondItem="QZX-pS-g7R" secondAttribute="leading" constant="21" id="JB4-Hh-wEc"/>
                                     <constraint firstItem="sYr-Uj-hhY" firstAttribute="top" secondItem="55t-4r-CrB" secondAttribute="bottom" constant="7" id="JBy-7v-OKo"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="centerX" secondItem="QZX-pS-g7R" secondAttribute="centerX" id="KSg-1P-qcJ"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="centerX" secondItem="7i5-OF-TvR" secondAttribute="centerX" id="Lkh-g0-m14"/>
-                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="leading" secondItem="HOm-V2-6Jr" secondAttribute="leading" id="NJV-qM-6CH"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="centerX" secondItem="55t-4r-CrB" secondAttribute="centerX" id="PO9-gH-TAF"/>
                                     <constraint firstItem="55t-4r-CrB" firstAttribute="top" secondItem="HOm-V2-6Jr" secondAttribute="bottom" constant="39" id="Pfm-fy-gm4"/>
-                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="top" secondItem="48S-PH-GqY" secondAttribute="top" id="YQv-ib-Aew"/>
+                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="leading" secondItem="HOm-V2-6Jr" secondAttribute="leading" id="SfM-FY-ro3"/>
+                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="trailing" secondItem="HOm-V2-6Jr" secondAttribute="trailing" id="XO1-9h-CDp"/>
+                                    <constraint firstItem="yfK-5b-gDO" firstAttribute="top" secondItem="QZX-pS-g7R" secondAttribute="topMargin" id="Zms-7p-T6c"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="centerX" secondItem="sYr-Uj-hhY" secondAttribute="centerX" id="bLH-1F-3ME"/>
                                     <constraint firstAttribute="bottom" secondItem="sYr-Uj-hhY" secondAttribute="bottom" constant="248" id="c5Y-se-pWg"/>
                                     <constraint firstItem="HOm-V2-6Jr" firstAttribute="top" secondItem="QZX-pS-g7R" secondAttribute="top" constant="84" id="fUo-bk-tZt"/>
                                     <constraint firstAttribute="bottom" secondItem="7i5-OF-TvR" secondAttribute="bottom" constant="176" id="sYy-nm-f5u"/>
-                                    <constraint firstItem="48S-PH-GqY" firstAttribute="leading" secondItem="yfK-5b-gDO" secondAttribute="trailing" id="xjU-PL-A2k"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,7 +114,6 @@
                         <outlet property="mainWeatherTemperatureStatusLabel" destination="oG8-Wl-Ryb" id="KIN-Nx-SMd"/>
                         <outlet property="mainWeatherTimeZone" destination="sYr-Uj-hhY" id="hoF-bs-dih"/>
                         <outlet property="mainWeatherWindSpeed" destination="7i5-OF-TvR" id="F3Y-Dz-Dte"/>
-                        <outlet property="searchWeatherButton" destination="48S-PH-GqY" id="uKx-Xt-l9U"/>
                         <outlet property="searchWeatherTextField" destination="yfK-5b-gDO" id="1lr-ve-K4w"/>
                     </connections>
                 </viewController>
